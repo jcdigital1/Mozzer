@@ -7,7 +7,7 @@ import { ChatInputBar } from './components/ChatInputBar';
 import { ChatMessage, LeadData, StepId } from './types';
 import { sound } from './utils/audio';
 import { getCurrentTime, formatPhoneNumber } from './utils/formatters';
-import { QUICK_AREA_SUGGESTIONS, COMPANY_NAME, MASCOT_IMAGE_URL } from './data/decorData';
+import { QUICK_AREA_SUGGESTIONS, COMPANY_NAME, MASCOT_IMAGE_URL, handleMascotImgError } from './data/decorData';
 import { Sparkles } from 'lucide-react';
 
 interface StepHistorySnapshot {
@@ -590,6 +590,8 @@ export default function App() {
               alt="Mascote Mozzer Decor"
               className="h-full w-auto object-contain drop-shadow-lg animate-bounce"
               style={{ animationDuration: '1.4s' }}
+              referrerPolicy="no-referrer"
+              onError={handleMascotImgError}
             />
           </div>
 

@@ -1,3 +1,4 @@
+import { SyntheticEvent } from 'react';
 import { ProductInfo } from '../types';
 
 /**
@@ -12,9 +13,19 @@ export const WHATSAPP_PHONE = '5511999998888';
 
 /**
  * URL Oficial do Mascote 3D fornecida pelo cliente.
- * Representa o consultor virtual Mozzer Decor em camisa polo azul royal.
+ * Usamos '/mascot.png' diretamente na pasta public para garantir que carregue
+ * com 100% de estabilidade na Vercel e qualquer servidor sem depender de serviços externos.
+ * Mantemos o link externo como fallback automático caso necessário.
  */
-export const MASCOT_IMAGE_URL = 'https://i.postimg.cc/X73HKBzX/file-00000000239c81f5957793e0a895524a.png';
+export const MASCOT_IMAGE_URL = '/mascot.png';
+export const MASCOT_FALLBACK_URL = 'https://i.postimg.cc/X73HKBzX/file-00000000239c81f5957793e0a895524a.png';
+
+export const handleMascotImgError = (e: SyntheticEvent<HTMLImageElement, Event>) => {
+  const target = e.currentTarget;
+  if (!target.src.includes('postimg.cc')) {
+    target.src = MASCOT_FALLBACK_URL;
+  }
+};
 
 export const COMPANY_NAME = 'MOZZER DECOR';
 export const COMPANY_TAGLINE = 'Pisos, Papéis de Parede, Persianas & Ambientes Planejados';

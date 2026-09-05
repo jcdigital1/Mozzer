@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChatMessage } from '../types';
-import { MASCOT_IMAGE_URL } from '../data/decorData';
+import { MASCOT_IMAGE_URL, handleMascotImgError } from '../data/decorData';
 import { CheckCheck } from 'lucide-react';
 import { ProductCatalogCards } from './ProductCatalogCards';
 import { ConversionSummaryCard } from './ConversionSummaryCard';
@@ -33,6 +33,8 @@ export const ChatBubble: React.FC<ChatBubbleProps> = ({
               src={MASCOT_IMAGE_URL}
               alt="Consultor Mozzer Decor"
               className="w-full h-full object-cover object-top transform scale-125 translate-y-0.5"
+              referrerPolicy="no-referrer"
+              onError={handleMascotImgError}
             />
           </div>
         </div>
@@ -144,6 +146,8 @@ export const TypingIndicator: React.FC = () => {
             src={MASCOT_IMAGE_URL}
             alt="Consultor Mozzer Decor"
             className="w-full h-full object-cover object-top transform scale-125 translate-y-0.5 animate-pulse"
+            referrerPolicy="no-referrer"
+            onError={handleMascotImgError}
           />
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MASCOT_IMAGE_URL } from '../data/decorData';
+import { MASCOT_IMAGE_URL, handleMascotImgError } from '../data/decorData';
 import { Sparkles, ChevronUp, ChevronDown } from 'lucide-react';
 
 interface MobileMascotBarProps {
@@ -42,6 +42,8 @@ export const MobileMascotBar: React.FC<MobileMascotBarProps> = ({
                 src={MASCOT_IMAGE_URL}
                 alt="Consultor Mozzer Decor"
                 className="max-h-full w-auto object-contain drop-shadow-md animate-mascot-breathe"
+                referrerPolicy="no-referrer"
+                onError={handleMascotImgError}
               />
             </div>
           </div>

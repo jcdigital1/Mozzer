@@ -1,5 +1,5 @@
 import React from 'react';
-import { MASCOT_IMAGE_URL, COMPANY_NAME, COMPANY_TAGLINE } from '../data/decorData';
+import { MASCOT_IMAGE_URL, COMPANY_NAME, COMPANY_TAGLINE, handleMascotImgError } from '../data/decorData';
 import { ShieldCheck, Sparkles, Award, Clock } from 'lucide-react';
 
 interface MascotHeroProps {
@@ -117,6 +117,8 @@ export const MascotHero: React.FC<MascotHeroProps> = ({
               className="h-72 sm:h-80 md:h-92 lg:h-[400px] xl:h-[440px] w-auto object-contain select-none drop-shadow-[0_25px_35px_rgba(0,0,0,0.7)] animate-mascot-breathe"
               draggable={false}
               loading="eager"
+              referrerPolicy="no-referrer"
+              onError={handleMascotImgError}
             />
           </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Volume2, VolumeX, RotateCcw, ArrowLeft, Shield } from 'lucide-react';
-import { MASCOT_IMAGE_URL, COMPANY_NAME } from '../data/decorData';
+import { MASCOT_IMAGE_URL, COMPANY_NAME, handleMascotImgError } from '../data/decorData';
 
 interface HeaderBarProps {
   currentStepIndex: number;
@@ -53,6 +53,8 @@ export const HeaderBar: React.FC<HeaderBarProps> = ({
                 src={MASCOT_IMAGE_URL}
                 alt="Mascote Mozzer Decor"
                 className="w-full h-full object-cover object-top transform scale-125 translate-y-0.5 animate-mascot-breathe"
+                referrerPolicy="no-referrer"
+                onError={handleMascotImgError}
               />
             </div>
             <span className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-slate-900 shadow-sm animate-pulse" />
