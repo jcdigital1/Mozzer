@@ -245,13 +245,16 @@ export default function App() {
 
         setTimeout(() => {
           mascotSend(
-            'Qual produto você está procurando?',
+            'Qual produto ou serviço você está procurando?',
             [
               { id: 'prod_laminado', label: 'Piso Laminado' },
               { id: 'prod_vinilico', label: 'Piso Vinílico', badge: 'Popular' },
-              { id: 'prod_persianas', label: 'Persianas' },
+              { id: 'prod_persianas', label: 'Persianas & Cortinas' },
               { id: 'prod_papel', label: 'Papel de Parede' },
               { id: 'prod_moveis', label: 'Móveis Planejados' },
+              { id: 'prod_camera', label: 'Instalação de Câmeras', badge: 'Segurança' },
+              { id: 'prod_portao', label: 'Manutenção de Portão Eletrônico' },
+              { id: 'prod_eletrica', label: 'Serviços de Elétrica' },
             ],
             undefined,
             750
@@ -266,18 +269,15 @@ export default function App() {
       setLeadData((prev) => ({ ...prev, product: productName }));
       setCurrentStep('BUDGET_DETAILS');
 
+      const config = getServicePromptConfig(productName);
+
       setTimeout(() => {
-        mascotSend(
-          `Ótima escolha! O ${productName} proporciona um acabamento sofisticado e durável.\n\nAgora me diga um pouco mais sobre o seu projeto: qual ambiente e metragem estimada você pretende transformar?`,
-          undefined,
-          undefined,
-          750
-        );
+        mascotSend(config.message, undefined, undefined, 750);
 
         setInputConfig({
-          placeholder: 'Ex: Sala e 2 quartos, aprox 45m²...',
+          placeholder: config.placeholder,
           type: 'text',
-          suggestions: QUICK_AREA_SUGGESTIONS,
+          suggestions: config.suggestions,
           disabled: false,
         });
       }, 350);
@@ -290,7 +290,7 @@ export default function App() {
 
       setTimeout(() => {
         mascotSend(
-          'Aqui está o catálogo dos nossos principais produtos e acabamentos. Você pode clicar no que mais gostar para solicitar uma cotação direta!',
+          'Aqui está o catálogo completo dos nossos produtos e serviços. Você pode clicar no que deseja para solicitar um orçamento direto!',
           undefined,
           { type: 'product_cards' },
           800
@@ -305,25 +305,73 @@ export default function App() {
 
       setTimeout(() => {
         mascotSend(
-          'Com certeza! Nossos consultores técnicos atendem com assessoria completa para arquitetos, designers e proprietários.\n\nQual o principal assunto ou projeto que você deseja discutir?',
+          'Com certeza! Nossos consultores técnicos atendem residências, condomínios e comércios com total assessoria.\n\nQual o principal assunto ou serviço que você deseja discutir?',
           undefined,
           undefined,
           750
         );
 
         setInputConfig({
-          placeholder: 'Ex: Dúvidas sobre contrapiso, prazos de entrega...',
+          placeholder: 'Ex: Dúvidas técnicas, visita de avaliação...',
           type: 'text',
           suggestions: [
             'Visita técnica no local',
-            'Dúvida sobre piso adequado para reforma',
-            'Parceria para arquitetos e decoradores',
+            'Instalação de câmeras ou CFTV',
+            'Manutenção urgente de portão',
+            'Projeto elétrico e iluminação LED',
+            'Dúvida sobre pisos e acabamentos',
           ],
           disabled: false,
         });
       }, 350);
       return;
     }
+  };
+
+  // Helper for tailored messages & suggestions depending on product/service
+  const getServicePromptConfig = (productName: string) => {
+    const lower = productName.toLowerCase();
+    if (lower.includes('câmera') || lower.includes('camera')) {
+      return {
+        message: `Excelente escolha! A segurança do seu patrimônio e da sua família é prioridade. 📹\n\nQuantas câmeras você precisa ou qual é o tipo de imóvel (residência, condomínio ou comércio)?`,
+        placeholder: 'Ex: Casa com 4 câmeras externas e acesso no celular...',
+        suggestions: [
+          'Kit com 4 câmeras Full HD',
+          'Kit com 8 câmeras com DVR',
+          'Câmeras Wi-Fi com áudio',
+          'Quero visita técnica para avaliar pontos',
+        ],
+      };
+    }
+    if (lower.includes('portão') || lower.includes('portao')) {
+      return {
+        message: `Entendido! Cuidamos da manutenção rápida do seu portão para garantir sua segurança e comodidade. ⚙️\n\nQual é o modelo do portão (deslizante, basculante) ou qual problema ele está apresentando?`,
+        placeholder: 'Ex: Motor basculante travou / não responde ao controle...',
+        suggestions: [
+          'Portão travou / não abre nem fecha',
+          'Trocar motor ou placa queimada',
+          'Codificar novos controles remotos',
+          'Manutenção preventiva e alinhamento',
+        ],
+      };
+    }
+    if (lower.includes('elétrica') || lower.includes('eletrica')) {
+      return {
+        message: `Perfeito! Realizamos serviços elétricos com padrão técnico, segurança e conformidade total. ⚡\n\nQual é a necessidade da sua instalação ou manutenção elétrica?`,
+        placeholder: 'Ex: Instalação de quadro de luz, fita de LED e tomadas...',
+        suggestions: [
+          'Instalação de quadro e disjuntores',
+          'Iluminação LED, spots e pendentes',
+          'Novos pontos de tomadas 110V/220V',
+          'Revisão elétrica completa do imóvel',
+        ],
+      };
+    }
+    return {
+      message: `Ótima escolha! O ${productName} proporciona um acabamento sofisticado e durável.\n\nAgora me diga um pouco mais sobre o seu projeto: qual ambiente e metragem estimada você pretende transformar?`,
+      placeholder: 'Ex: Sala e 2 quartos, aprox 45m²...',
+      suggestions: QUICK_AREA_SUGGESTIONS,
+    };
   };
 
   // Handle direct product selection from catalog cards
@@ -336,18 +384,15 @@ export default function App() {
     setLeadData((prev) => ({ ...prev, product: productName, flowType: 'budget' }));
     setCurrentStep('BUDGET_DETAILS');
 
+    const config = getServicePromptConfig(productName);
+
     setTimeout(() => {
-      mascotSend(
-        `Excelente escolha! O ${productName} é um dos nossos grandes destaques.\n\nMe conte um pouco sobre o ambiente: você tem uma metragem aproximada ou ideia dos cômodos?`,
-        undefined,
-        undefined,
-        700
-      );
+      mascotSend(config.message, undefined, undefined, 700);
 
       setInputConfig({
-        placeholder: 'Ex: Apartamento 60m², sala e quartos...',
+        placeholder: config.placeholder,
         type: 'text',
-        suggestions: QUICK_AREA_SUGGESTIONS,
+        suggestions: config.suggestions,
         disabled: false,
       });
     }, 400);

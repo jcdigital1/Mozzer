@@ -1,6 +1,6 @@
 {
   "name": "Mozzer Decor - Consultor Virtual",
-  "description": "Experiência conversacional interativa da Mozzer Decor com consultor virtual 3D para orçamentos e consultoria de interiores.",
+  "description": "Experiência conversacional interativa da Mozzer Decor com consultor virtual 3D para pisos, decoração, câmeras de segurança, portão eletrônico e elétrica.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

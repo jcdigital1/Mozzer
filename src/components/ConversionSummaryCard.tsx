@@ -48,7 +48,7 @@ export const ConversionSummaryCard: React.FC<ConversionSummaryCardProps> = ({ le
           <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
             <Layers className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
             <div className="flex-1 min-w-0">
-              <span className="text-[10px] text-slate-400 uppercase font-semibold block">Produto Solicitado</span>
+              <span className="text-[10px] text-slate-400 uppercase font-semibold block">Produto / Serviço Solicitado</span>
               <span className="font-semibold text-slate-100">{lead.product}</span>
             </div>
           </div>
@@ -58,7 +58,7 @@ export const ConversionSummaryCard: React.FC<ConversionSummaryCardProps> = ({ le
           <div className="flex items-start gap-2.5 p-2.5 rounded-xl bg-slate-800/60 border border-slate-700/50">
             <FileText className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
             <div className="flex-1 min-w-0">
-              <span className="text-[10px] text-slate-400 uppercase font-semibold block">Detalhes do Projeto / Metragem</span>
+              <span className="text-[10px] text-slate-400 uppercase font-semibold block">Detalhes da Solicitação / Projeto</span>
               <span className="font-semibold text-slate-100 leading-relaxed">{lead.projectDetails}</span>
             </div>
           </div>

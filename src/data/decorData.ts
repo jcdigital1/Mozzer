@@ -28,7 +28,7 @@ export const handleMascotImgError = (e: SyntheticEvent<HTMLImageElement, Event>)
 };
 
 export const COMPANY_NAME = 'MOZZER DECOR';
-export const COMPANY_TAGLINE = 'Pisos, Papéis de Parede, Persianas & Ambientes Planejados';
+export const COMPANY_TAGLINE = 'Decoração, Móveis Planejados, Câmeras, Portões & Elétrica';
 
 export const PRODUCTS_CATALOG: ProductInfo[] = [
   {
@@ -75,6 +75,33 @@ export const PRODUCTS_CATALOG: ProductInfo[] = [
     features: ['Projeto 3D personalizado', 'Corrediças telescópicas ocultas com amortecedor', 'Puxadores embutidos e perfil slim', 'Acabamento premium sem folgas'],
     idealFor: 'Cozinhas planejadas, dormitórios, closets e banheiros',
     popularFinishes: ['MDF Louro Freijó', 'Cinza Grafite Acetinado', 'Branco Supremo', 'Vidro Reflecta Fumê']
+  },
+  {
+    id: 'instalacao-cameras',
+    name: 'Instalação de Câmeras',
+    tagline: 'Sistemas de segurança CFTV e Wi-Fi com monitoramento em tempo real no celular.',
+    icon: 'Camera',
+    features: ['Acesso e alertas no smartphone 24h', 'Câmeras Full HD com visão noturna nítida', 'Gravação segura em nuvem ou DVR/NVR', 'Instalação limpa com fiação organizada'],
+    idealFor: 'Residências, condomínios, lojas e empresas',
+    popularFinishes: ['Câmeras Wi-Fi Inteligentes', 'Kit CFTV 4 a 16 Câmeras', 'Câmeras 360° com Áudio', 'DVR / NVR Alta Definição']
+  },
+  {
+    id: 'manutencao-portao',
+    name: 'Manutenção de Portão Eletrônico',
+    tagline: 'Conserto ágil, substituição de motores, placas centrais, controles e automação.',
+    icon: 'Wrench',
+    features: ['Atendimento rápido para portão travado', 'Troca e codificação de controles remotos', 'Motores rápidos turbo / industriais', 'Instalação de travas eletromagnéticas e sensores'],
+    idealFor: 'Portões deslizantes, basculantes e pivotantes',
+    popularFinishes: ['Motores Rápidos JetFlex / Turbo', 'Placas Centrais e Fim de Curso', 'Controles e Botoeiras Extras', 'Travas e Fotocélulas Anti-Esmagamento']
+  },
+  {
+    id: 'eletrica',
+    name: 'Serviços de Elétrica',
+    tagline: 'Instalações e reparos elétricos com segurança técnica, normas ABNT e garantia.',
+    icon: 'Zap',
+    features: ['Instalação de quadros e disjuntores', 'Iluminação LED, perfis, spots e pendentes', 'Novos pontos de tomadas e interruptores 110V/220V', 'Revisão geral de fiação e eliminação de curtos'],
+    idealFor: 'Reformas, construções e manutenções emergenciais',
+    popularFinishes: ['Quadros de Distribuição (QDC)', 'Iluminação Arquitetônica LED', 'Instalação de Chuveiros e Tomadas 20A', 'Revisão Elétrica Completa']
   }
 ];
 
@@ -82,6 +109,8 @@ export const QUICK_AREA_SUGGESTIONS = [
   'Apartamento completo (~60 a 80m²)',
   'Sala e corredor (~25m²)',
   'Quarto casal + closet (~18m²)',
-  'Área comercial / consultório (~40m²)',
-  'Quero visita técnica para medir'
+  'Kit de Câmeras (4 a 8 pontos)',
+  'Manutenção urgente de Portão',
+  'Instalação ou Revisão Elétrica',
+  'Quero visita técnica para avaliar'
 ];

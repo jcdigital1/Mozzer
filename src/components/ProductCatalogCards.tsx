@@ -1,6 +1,6 @@
 import React from 'react';
 import { PRODUCTS_CATALOG } from '../data/decorData';
-import { Layers, ShieldCheck, SunDim, Sparkles, Home, CheckCircle2, ArrowRight } from 'lucide-react';
+import { Layers, ShieldCheck, SunDim, Sparkles, Home, CheckCircle2, ArrowRight, Camera, Wrench, Zap } from 'lucide-react';
 import { ProductInfo } from '../types';
 
 interface ProductCatalogCardsProps {
@@ -20,6 +20,12 @@ export const ProductCatalogCards: React.FC<ProductCatalogCardsProps> = ({ onSele
         return <Sparkles className="w-5 h-5 text-purple-400" />;
       case 'Home':
         return <Home className="w-5 h-5 text-emerald-400" />;
+      case 'Camera':
+        return <Camera className="w-5 h-5 text-sky-400" />;
+      case 'Wrench':
+        return <Wrench className="w-5 h-5 text-orange-400" />;
+      case 'Zap':
+        return <Zap className="w-5 h-5 text-yellow-400" />;
       default:
         return <Sparkles className="w-5 h-5 text-blue-400" />;
     }
